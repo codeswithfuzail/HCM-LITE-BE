@@ -3,7 +3,6 @@ dist/
 .env
 .env.*
 !.env.example
-.vercel/
+coverage/
 *.log
-.DS_Store
-.vscode/
+npm-debug.log*

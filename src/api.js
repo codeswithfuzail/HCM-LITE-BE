@@ -1,6 +1,4 @@
-const B = import.meta.env.VITE_API_URL || '/api';
-export const api = async (p, o = {}) => {
-  const t = localStorage.getItem('t');
-  const r = await fetch(B + p, { ...o, headers: { 'Content-Type': 'application/json', ...(t && { Authorization: 'Bearer ' + t }) }, body: o.body && JSON.stringify(o.body) });
-  const d = await r.json().catch(() => ({})); if (!r.ok) throw new Error(d.error || 'Something went wrong'); return d;
-};
+import axios from 'axios';
+export const api=axios.create({baseURL:import.meta.env.VITE_API_BASE_URL||'http://localhost:4000/api',timeout:15000});
+api.interceptors.request.use(c=>{const token=localStorage.getItem('hcm-token');if(token)c.headers.Authorization=`Bearer ${token}`;return c;});
+api.interceptors.response.use(r=>r,err=>{if(err.response?.status===401){localStorage.removeItem('hcm-token');window.dispatchEvent(new Event('hcm:logout'));}return Promise.reject(new Error(err.response?.data?.error||err.message||'Request failed'));});
