@@ -2,7 +2,7 @@ import React,{useCallback,useEffect,useState}from'react';
 import{Link}from'react-router-dom';
 import{ResponsiveContainer,BarChart,Bar,XAxis,YAxis,Tooltip,Legend,LineChart,Line,PieChart,Pie,Cell}from'recharts';
 import{api}from'./api';
-import{Upload,Download,Plus,RefreshCw,Check,FileText,CalendarDays,MapPin,UserPlus,Trash2,Search}from'lucide-react';
+import{Upload,Download,Plus,RefreshCw,Check,FileText,CalendarDays,MapPin,UserPlus,Trash2,Search,Sparkles}from'lucide-react';
 
 const money=value=>`PKR ${Number(value||0).toLocaleString('en-PK',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
 const showDate=value=>value?new Date(value).toLocaleDateString():'—';
